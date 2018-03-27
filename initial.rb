@@ -12,15 +12,14 @@ hey mama
 hey mama
 EOF
 print <<"foo", <<"bar"
-	i said foo.
+  i said foo.
 foo
-	i said bar.
+  i said bar.
 bar
 puts "hey i am in bestpeers"#use of BEGIN and END
-
 BEGIN {
-	puts "hey i am in indore"
+  puts "hey i am in indore"
 }
 END {
-	puts "hey i am in office right now!!"
+  puts "hey i am in office right now!!"
 }
