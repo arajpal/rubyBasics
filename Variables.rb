@@ -15,10 +15,21 @@ class Student#class
     puts "student name is #{@stu_name}"
     puts "student enrollment number is #{@stu_enroll}"
     puts "#{@stu_name} is working on #{language}"
+    defined? language
+  end
+  def professional_output()
+    puts "person id is #{@stu_id}"
+    puts "person name is #{@stu_name}"
+    puts "person social number is #{@stu_enroll}"
   end
   def total_no_of_students()
     @@no_of_student += 1
-    puts "total number of student: #{@@no_of_student}"
+    puts "total number of student: #{$branch}"
+  end
+end
+class College
+  def facilty_output()
+    puts "faculty name is #{$branch}"
   end
 end
   stu1 = Student.new#object
@@ -30,3 +41,6 @@ end
   stu2.output()
   stu1.total_no_of_students()
   stu2.total_no_of_students()
+  stu1.professional_output()
+  stu3 = College.new
+  stu3.facilty_output()
