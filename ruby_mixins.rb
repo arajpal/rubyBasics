@@ -1,45 +1,57 @@
-$movie_id = 0#global variable
-module Pvr
-  def self.included(films)#including module into the class
-    films.extend(Inox)#extend module Inox into class Movies 
+module Multiplex
+  
+  def movie_name
+    puts "enter name of movie"
+    @movie_name = gets #instance variable
   end
-  module Inox
-    def id#class method
-      $movie_id = $movie_id + 1
-    end
-  end
-  def movie_type#instance method
+
+  def movie_type #instance method
     puts "enter the type of movie you are watching"
     @movie_type = gets
   end
-end
-class Movies
-  def movie_name
-    puts "enter name of movie"
-    @movie_name = gets#instance variable
+
+  def movie_rating
+    puts "enter movie rating out of 10"
+    @movie_rating = gets
   end
-  include Pvr
+
+end
+
+class Movies
+
+  @@movie_watched = 0
+  
+  include Multiplex
+
+  def self.movie_watched
+    @@movie_watched = @@movie_watched + 1
+  end
+
   def movie_output
     puts "Movie-type : #{@movie_type}"
     puts "Movie-name : #{@movie_name}"
-    puts "Number of movie you have watched : #{$movie_id}"
+    puts "Movie-rating: #{@movie_rating}"
+    puts "Number of movie you have watched : #{@@movie_watched}"
   end
-  def feedback_form
-    puts "want to give feedback"
-    @value = gets
-    while @value == "y\n"
+
+  def survey_form
+    puts "want to give survey"
+    while gets.downcase.chomp! == 'y'
       movie_name
       movie_type
-      Movies.id
+      movie_rating
+      Movies.movie_watched
       movie_output
-      puts "want to give feedback"
-      @value = gets
+      puts "want to give survey"
     end
   end
+
   def thank
     puts "Thank-You"
   end
+
 end
+
 movie = Movies.new
-movie.feedback_form
+movie.survey_form
 movie.thank
